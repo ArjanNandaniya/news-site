@@ -1,0 +1,33 @@
+<?php
+$topics = $this->topics;
+foreach ($topics as $topic) {
+    ?>
+    <section>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3><?=$topic['title'];?></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <p class="text-muted">
+                    <?=nl2br($topic['description']);?>
+                </p>
+            </div>
+            <div class="col-xs-4">
+                <p class="pull-right">
+                    <a href="/vote/add/<?=$topic['id']; ?>" class="btn btn-success">
+                    <span class="glyphicon glyphicon-thumbs-up">
+                    <strong><?=(isset($topic['count'])) ? $topic['count'] : 0;?></strong>
+                    </span>
+                    </a>
+                    <a href="topic/edit?id=<?=$topic['id']; ?>" class="btn btn-primary">Edit</a>
+                    <a href="topic/delete?id=<?=$topic['id']; ?>" class="btn btn-danger" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Are you sure?" data-content=" This cannot be undone!">Delete</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <?php
+}
+?>
